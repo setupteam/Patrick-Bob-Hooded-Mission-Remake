@@ -89,28 +89,6 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Cabeza
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 462
-      y: 4
-      width: 491
-      height: 490
-    spriteID: 0e89121f162bca14d8aab3308aa61595
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 436, y: -765}
   - name: right_arm
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -122,7 +100,7 @@ ScriptedImporter:
       y: 502
       width: 246
       height: 446
-    spriteID: 18990a5d7940f794384993889426a7fa
+    spriteID: c8e62b7657b7f7e4d80707e0dadeaba8
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -133,6 +111,28 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 452, y: 121}
+  - name: Cabeza
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 462
+      y: 4
+      width: 491
+      height: 490
+    spriteID: a092b1c14e653aa4fb1393d37561e072
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 436, y: -765}
   - name: Torso
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -144,7 +144,7 @@ ScriptedImporter:
       y: 4
       width: 450
       height: 637
-    spriteID: 5d44e9ae26515e349beea7bdb2b66e05
+    spriteID: 05df0938e7e6af546b3cc37fa2144a69
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -166,7 +166,7 @@ ScriptedImporter:
       y: 502
       width: 246
       height: 447
-    spriteID: fa5fe108fc0745f4595f9a220ef72c40
+    spriteID: 8ac8978b1bd575b449a0f0f2fcb9eaa2
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -188,7 +188,7 @@ ScriptedImporter:
       y: 649
       width: 138
       height: 323
-    spriteID: 4b02d068b9da19f409dfa428d1909501
+    spriteID: e30e0875643c59649ab2974b455201e9
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -210,7 +210,7 @@ ScriptedImporter:
       y: 649
       width: 138
       height: 323
-    spriteID: 77b99f877ccad56438dc13d6af31bd59
+    spriteID: faadc7121e0d4e540a6d34c034d98775
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -240,46 +240,46 @@ ScriptedImporter:
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: Cabeza
-    spriteName: Cabeza
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 0e89121f162bca14d8aab3308aa61595
-    layerID: 10
-    mosaicPosition: {x: 462, y: 4}
   - name: right_arm
     spriteName: right_arm
     isGroup: 0
     parentIndex: -1
-    spriteID: 18990a5d7940f794384993889426a7fa
+    spriteID: c8e62b7657b7f7e4d80707e0dadeaba8
     layerID: 6
     mosaicPosition: {x: 716, y: 502}
+  - name: Cabeza
+    spriteName: Cabeza
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a092b1c14e653aa4fb1393d37561e072
+    layerID: 10
+    mosaicPosition: {x: 462, y: 4}
   - name: Torso
     spriteName: Torso
     isGroup: 0
     parentIndex: -1
-    spriteID: 5d44e9ae26515e349beea7bdb2b66e05
+    spriteID: 05df0938e7e6af546b3cc37fa2144a69
     layerID: 5
     mosaicPosition: {x: 4, y: 4}
   - name: left_arm
     spriteName: left_arm
     isGroup: 0
     parentIndex: -1
-    spriteID: fa5fe108fc0745f4595f9a220ef72c40
+    spriteID: 8ac8978b1bd575b449a0f0f2fcb9eaa2
     layerID: 4
     mosaicPosition: {x: 462, y: 502}
   - name: right_foot
     spriteName: right_foot
     isGroup: 0
     parentIndex: -1
-    spriteID: 4b02d068b9da19f409dfa428d1909501
+    spriteID: e30e0875643c59649ab2974b455201e9
     layerID: 3
     mosaicPosition: {x: 4, y: 649}
   - name: left_foot
     spriteName: left_foot
     isGroup: 0
     parentIndex: -1
-    spriteID: 77b99f877ccad56438dc13d6af31bd59
+    spriteID: faadc7121e0d4e540a6d34c034d98775
     layerID: 2
     mosaicPosition: {x: 150, y: 649}
   characterData:
