@@ -29,7 +29,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: hooded_walk
+  m_Name: hooded_Walk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -55,7 +55,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: hooded_Idle_animation
+  m_Name: hooded_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -85,26 +85,26 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2515285650757326974}
-    m_Position: {x: 440, y: 100, z: 0}
+    m_Position: {x: 460, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5034537559558254922}
-    m_Position: {x: 430, y: 220, z: 0}
+    m_Position: {x: 460, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1335168441644699091}
-    m_Position: {x: 200, y: 310, z: 0}
+    m_Position: {x: 460, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4755226995020389420}
-    m_Position: {x: 200, y: 100, z: 0}
+    m_Position: {x: 200, y: 170, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 470, y: -30, z: 0}
+  m_AnyStatePosition: {x: 720, y: 60, z: 0}
   m_EntryPosition: {x: 10, y: 180, z: 0}
-  m_ExitPosition: {x: 660, y: 160, z: 0}
+  m_ExitPosition: {x: 780, y: 190, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1335168441644699091}
+  m_DefaultState: {fileID: -4755226995020389420}
 --- !u!1102 &-2515285650757326974
 AnimatorState:
   serializedVersion: 5
@@ -196,7 +196,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: hooded_Run_animation
+  m_Name: hooded_Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
