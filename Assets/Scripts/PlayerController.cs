@@ -5,26 +5,27 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	const int LEFT_DIRECTION = -1;
 	const int RIGHT_DIRECTION = 1;
-    private bool isAlive;
+
     public GameObject game, playerPrefab;
-    private int direction;
-    private Animator animator;
-    private float startY;
+    public Transform feetRef;
+    public float speed, jumpForce;
+
     private Rigidbody2D rb2d;
-    public float speed;
-    public float jumpForce;
+    private Animator animator;
+    private bool isAlive, isGrounded;
+    private int direction;
+   
 
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         animator = playerPrefab.GetComponent<Animator>();
         isAlive = true;
-        startY = transform.position.y;
-        this.direction = RIGHT_DIRECTION;
+        direction = RIGHT_DIRECTION;
     }
 
     // Update is called once per frame
     void Update() {
-        bool isGrounded = transform.position.y == startY;
+        if(isAlive){}
         //bool isPlaying = (game.GetComponent<GameController>().gameState == GameState.Playing);
         bool isPlaying = true;
         
@@ -73,19 +74,20 @@ public class PlayerController : MonoBehaviour {
                 }
             }else{
                 //No esta en el suelo
-                rb2d.velocity = new Vector2(moveHorizontal * speed, rb2d.velocity.y);
+                
                 //Movimiento en el aire a 1
-                if(rb2d.velocity.y == 0){
-                    //No hay movimiento vertical
-                    transform.position = new Vector2(transform.position.x,startY);
-                }else if(rb2d.velocity.y < 0){
+                
+                rb2d.velocity = new Vector2(moveHorizontal * speed, rb2d.velocity.y);
+
+                if(rb2d.velocity.y < 0){
                     //Descendiendo
+                    UpdateState("hooded_Jump");
                 }else{
                     //Ascendiendo
-                     UpdateState("hooded_Jump");
+                    UpdateState("hooded_Jump");
                 }
             }
-        }   
+        }
     }
 
     public void UpdateState(string state = null) {
@@ -93,4 +95,31 @@ public class PlayerController : MonoBehaviour {
             animator.Play(state);
         }
     }
+
+    void CheckPlatform(){
+        RaycastHit2D hit = Physics2D.Raycast(feetRef.position, - Vector2.up * 5);
+        Debug.DrawRay(feetRef.position, - Vector2.up*5,Color.green);
+        if(hit.collider != null){
+            if(hit.collider.tag == "Dead Line"){
+            }
+        }
+    }
+    
+    void OnTriggerEnter2D(Collider2D collider){
+        if(collider.tag == "Ground"){
+            //tocar el suelo
+            if((int)(collider.transform.position.y-feetRef.position.y) == 0)
+                isGrounded = true;
+        }else if(collider.tag == "Dead Line"){
+            //morir de una caida al vacio
+            transform.position = new Vector2(0, 5);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider){
+        if(collider.tag == "Ground"){
+            isGrounded = false;
+        }
+    }
+
 }
