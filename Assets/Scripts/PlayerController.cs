@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb2d;
     private Animator animator;
     private bool isAlive, isGrounded;
-    private int direction;
-   
+    private int direction;  
 
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
@@ -33,16 +32,7 @@ public class PlayerController : MonoBehaviour {
             float moveHorizontal = Input.GetAxis ("Horizontal");
             float moveVertical = Input.GetAxis ("Vertical");
             
-            if(isGrounded) {
-                //Esta en el suelo
-                rb2d.velocity = new Vector2(moveHorizontal * speed / 0.8f, rb2d.velocity.y);
-                //Movimiento en el suelo a 0.8
-                if(Input.GetKey(KeyCode.UpArrow) && rb2d.velocity.y == 0){
-                    //Salto
-                    UpdateState("hooded_Idle");
-                    UpdateState("hooded_Jump");
-                    rb2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                }else if(Input.GetKey(KeyCode.LeftArrow)) {
+            if(Input.GetKey(KeyCode.LeftArrow)) {
                     //Mov. izquierda
                     if(!Input.GetKey(KeyCode.RightArrow)){
                         //evitar que haga moon walk
@@ -62,7 +52,17 @@ public class PlayerController : MonoBehaviour {
                         //Esta mirando a la derecha
                     }
                 }
-
+            
+            if(isGrounded) {
+                //Esta en el suelo
+                rb2d.velocity = new Vector2(moveHorizontal * speed / 0.8f, rb2d.velocity.y);
+                //Movimiento en el suelo a 0.8
+                if(Input.GetKey(KeyCode.UpArrow) && rb2d.velocity.y == 0){
+                    //Salto
+                    UpdateState("hooded_Idle");
+                    UpdateState("hooded_Jump");
+                    rb2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                }
                 if(rb2d.velocity.x != 0){
                     //Tiene movimiento horizontal
                     UpdateState("hooded_Walk");
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour {
                 //No esta en el suelo
                 
                 //Movimiento en el aire a 1
-                
+                           
                 rb2d.velocity = new Vector2(moveHorizontal * speed, rb2d.velocity.y);
 
                 if(rb2d.velocity.y < 0){
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour {
                     UpdateState("hooded_Jump");
                 }
             }
+          
         }
     }
 
