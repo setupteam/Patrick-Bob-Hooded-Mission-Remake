@@ -52,18 +52,25 @@ public class PlayerController : MonoBehaviour {
                         //Esta mirando a la derecha
                     }
                 }
-            
+             if(Input.GetKey(KeyCode.UpArrow)){
+                    Debug.Log(isGrounded);
+                }
             if(isGrounded) {
                 //Esta en el suelo
                 rb2d.velocity = new Vector2(moveHorizontal * speed / 0.8f, rb2d.velocity.y);
                 //Movimiento en el suelo a 0.8
-                if(Input.GetKey(KeyCode.UpArrow) && rb2d.velocity.y == 0){
+                if(Input.GetKey(KeyCode.UpArrow)){
+                    Debug.Log(rb2d.velocity.y);
+                }
+                
+                if(Input.GetKey(KeyCode.UpArrow) && rb2d.velocity.y>= -0.1 && rb2d.velocity.y <= 0.1){
                     //Salto
                     UpdateState("hooded_Idle");
                     UpdateState("hooded_Jump");
                     rb2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                    isGrounded = false;
                 }
-                if(rb2d.velocity.x != 0){
+                if(rb2d.velocity.x != 0 && isGrounded){
                     //Tiene movimiento horizontal
                     UpdateState("hooded_Walk");
                     //Animación caminar
@@ -76,15 +83,18 @@ public class PlayerController : MonoBehaviour {
                 //No esta en el suelo
                 
                 //Movimiento en el aire a 1
-                           
+                
                 rb2d.velocity = new Vector2(moveHorizontal * speed, rb2d.velocity.y);
 
                 if(rb2d.velocity.y < 0){
                     //Descendiendo
                     UpdateState("hooded_Jump");
-                }else{
+
+                }else if(rb2d.velocity.y > 0){
                     //Ascendiendo
                     UpdateState("hooded_Jump");
+                }else{
+                    UpdateState("hooded_Idle");
                 }
             }
           
@@ -105,13 +115,45 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
-    
-    void OnTriggerEnter2D(Collider2D collider){
-        if(collider.tag == "Ground"){
+
+    /** Una sola colisión
+    void OnCollisionEnter2D(Collision2D collision){
+        string tagName = collision.gameObject.tag;
+        Vector2 point = collision.contacts[0].point;
+        // umbral de aceptación es de 0.2... si los pies están dentro de .2 menos o .2 mas de la posición de la colisión
+        if(tagName == "Ground" && feetRef.position.y > point.y-0.2 && feetRef.position.y < point.y+0.2){
             //tocar el suelo
-            if((int)(collider.transform.position.y-feetRef.position.y) == 0)
-                isGrounded = true;
-        }else if(collider.tag == "Dead Line"){
+            isGrounded = true;    
+        }
+    }
+    */
+
+    void OnCollisionEnter2D(Collision2D collision){
+        string tagName = collision.gameObject.tag;
+        ContactPoint2D[] points = collision.contacts;
+        // umbral de aceptación es de 0.2... si los pies están dentro de .2 menos o .2 mas de la posición de la colisión
+        if(tagName == "Ground"){
+            bool floorContact = false;
+            for (int i = 0; i < points.Length && !floorContact; i++)
+            {
+                if(feetRef.position.y > points[i].point.y-0.2 && feetRef.position.y < points[i].point.y+0.2){
+                    floorContact = true;
+                }
+            }
+            //tocar el suelo
+            isGrounded = floorContact;    
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision){
+        string tagName = collision.gameObject.tag;
+        if(tagName == "Ground"){
+            isGrounded = false;
+        }
+    }
+    
+    void OnTriggerEnter2D(Collider2D collider) {
+        if(collider.tag == "Dead Line"){
             //morir de una caida al vacio
             transform.position = new Vector2(0, 5);
         }
